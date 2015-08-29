@@ -5,7 +5,7 @@ namespace tourze\Twig;
 use Exception;
 use tourze\Base\Config;
 use tourze\Twig\Loader\File;
-use tourze\View\Base;
+use tourze\View\Base as BaseView;
 use Twig_Environment;
 use Twig_SimpleFilter;
 use Twig_SimpleFunction;
@@ -13,7 +13,7 @@ use Twig_SimpleFunction;
 /**
  * Twig视图
  */
-class Twig extends Base
+class Twig extends BaseView
 {
 
     /**

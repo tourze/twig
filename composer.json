@@ -11,11 +11,23 @@
   ],
   "require": {
     "tourze/core": "dev-master",
+    "tourze/view": "dev-master",
     "twig/twig": "^1.21"
   },
   "autoload": {
     "psr-4": {
       "tourze\\Twig\\": "src/"
-    }
+    },
+    "files": [
+      "bootstrap.php"
+    ]
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "tourze\\Twig\\": "tests/"
+    },
+    "files": [
+      "bootstrap-dev.php"
+    ]
   }
 }
