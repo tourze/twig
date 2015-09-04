@@ -3,8 +3,8 @@
 return [
 
     'component' => [
-        'twigArray'    => [
-            'class'  => 'tourze\Twig\Component\TwigArray',
+        'twig'    => [
+            'class'  => 'tourze\Twig\Component\TwigArrayLoader',
             'params' => [
             ],
             'call'   => [
