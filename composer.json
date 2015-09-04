@@ -17,7 +17,7 @@
     "asm89/twig-cache-extension": "^1.0",
     "league/commonmark": "~0.5",
     "aptoma/twig-markdown": "~1.1",
-    "njh/twig-html-helpers": "dev-master@dev"
+    "tourze/twig-html-helpers": "dev-master"
   },
   "autoload": {
     "psr-4": {
