@@ -11,6 +11,10 @@ use Asm89\Twig\CacheExtension\Extension as CacheExtension;
 use Doctrine\Common\Cache\ArrayCache;
 use tourze\Base\Base;
 use tourze\Base\Config;
+use tourze\Base\Helper\Arr;
+use tourze\Twig\Exception\TwigException;
+use tourze\Twig\Loader\ArrayLoader;
+use tourze\Twig\Loader\FileLoader;
 use Twig_Environment;
 use Twig_Extension_HTMLHelpers;
 use Twig_LoaderInterface;
@@ -24,6 +28,41 @@ use Twig_SimpleFunction;
  */
 class Twig extends Base
 {
+
+    /**
+     * 数组加载器
+     */
+    const ARRAY_LOADER = 1;
+
+    /**
+     * @const 文件加载器
+     */
+    const FILE_LOADER = 2;
+
+    /**
+     * @param array $options
+     * @return ArrayLoader|FileLoader
+     * @throws \tourze\Twig\Exception\TwigException
+     */
+    public static function createLoader(array $options)
+    {
+        $type = Arr::get($options, 'type', 'Array');
+        $args = Arr::get($options, 'args', []);
+
+        switch ($type)
+        {
+            case self::ARRAY_LOADER:
+                $instance = new ArrayLoader($args);
+                break;
+            case self::FILE_LOADER:
+                $instance = new FileLoader($args);
+                break;
+            default:
+                throw new TwigException('The requested twig loader not found.');
+        }
+
+        return $instance;
+    }
 
     /**
      * @param Twig_LoaderInterface $loader
@@ -71,7 +110,7 @@ class Twig extends Base
     /**
      * 获取TWIG组件
      *
-     * @return \tourze\Twig\Component\TwigArrayLoader
+     * @return \tourze\Twig\Component\Twig
      * @throws \tourze\Base\Exception\ComponentNotFoundException
      */
     public static function getTwig()

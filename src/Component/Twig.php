@@ -3,20 +3,21 @@
 namespace tourze\Twig\Component;
 
 use tourze\Base\Component;
-use tourze\Twig\Twig;
+use tourze\Twig\Twig as TwigBase;
 use Twig_Environment;
 use Twig_Loader_Array;
+use Twig_LoaderInterface;
 
 /**
  * ArrayLoader的实现
  *
- * @property array             templates
- * @property array             options
  * @property Twig_Loader_Array loader
+ * @property array             loaderOptions
  * @property Twig_Environment  environment
+ * @property array             environmentOptions
  * @package tourze\Twig\Component
  */
-class TwigArrayLoader extends Component
+class Twig extends Component
 {
 
     /**
@@ -43,7 +44,7 @@ class TwigArrayLoader extends Component
     /**
      * @var array 环境选项
      */
-    protected $_options = [
+    protected $_environmentOptions = [
         'debug'               => false,
         'charset'             => 'UTF-8',
         'base_template_class' => 'Twig_Template',
@@ -57,26 +58,26 @@ class TwigArrayLoader extends Component
     /**
      * @return array
      */
-    public function getOptions()
+    public function getEnvironmentOptions()
     {
-        return $this->_options;
+        return $this->_environmentOptions;
     }
 
     /**
      * @param array $options
      */
-    public function setOptions(array $options)
+    public function setEnvironmentOptions(array $options)
     {
-        $this->_options = $options;
+        $this->_environmentOptions = $options;
     }
 
     /**
-     * @var Twig_Loader_Array 模板加载器
+     * @var Twig_LoaderInterface 模板加载器
      */
     protected $_loader;
 
     /**
-     * @return Twig_Loader_Array
+     * @return Twig_LoaderInterface
      */
     public function getLoader()
     {
@@ -84,52 +85,32 @@ class TwigArrayLoader extends Component
     }
 
     /**
-     * @param Twig_Loader_Array $twig
+     * @param Twig_LoaderInterface $twig
      */
-    public function setLoader(Twig_Loader_Array $twig)
+    public function setLoader(Twig_LoaderInterface $twig)
     {
         $this->_loader = $twig;
     }
 
     /**
-     * @var array 模板列表
+     * @var array 加载器的配置选项
      */
-    protected $_templates = [];
+    protected $_loaderOptions = [];
 
     /**
      * @return array
      */
-    public function getTemplates()
+    public function getLoaderOptions()
     {
-        return $this->_templates;
+        return $this->_loaderOptions;
     }
 
     /**
-     * @param array $templates
+     * @param array $loaderOptions
      */
-    public function setTemplates(array $templates)
+    public function setLoaderOptions($loaderOptions)
     {
-        $this->_templates = $templates;
-
-        // 设置模板时，顺便写到twig
-        // 先清空loader
-        $this->loader = new Twig_Loader_Array([]);
-        foreach ($this->_templates as $name => $content)
-        {
-            $this->addTemplate($name, $content);
-        }
-    }
-
-    /**
-     * 增加模板
-     *
-     * @param string $name
-     * @param mixed  $content
-     */
-    public function addTemplate($name, $content)
-    {
-        $this->_templates[$name] = $content;
-        $this->loader->setTemplate($name, $content);
+        $this->_loaderOptions = $loaderOptions;
     }
 
     /**
@@ -138,8 +119,8 @@ class TwigArrayLoader extends Component
     public function init()
     {
         parent::init();
-        $this->loader = new Twig_Loader_Array([]);
-        $this->environment = Twig::createEnvironment($this->loader, $this->options);
+        $this->loader = TwigBase::createLoader($this->loaderOptions);
+        $this->environment = TwigBase::createEnvironment($this->loader, $this->environmentOptions);
     }
 
     /**
