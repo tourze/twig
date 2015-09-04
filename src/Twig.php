@@ -9,6 +9,7 @@ use Asm89\Twig\CacheExtension\CacheProvider\DoctrineCacheAdapter;
 use Asm89\Twig\CacheExtension\CacheStrategy\LifetimeCacheStrategy;
 use Asm89\Twig\CacheExtension\Extension as CacheExtension;
 use Doctrine\Common\Cache\ArrayCache;
+use tourze\Base\Base;
 use tourze\Base\Config;
 use Twig_Environment;
 use Twig_Extension_HTMLHelpers;
@@ -21,7 +22,7 @@ use Twig_SimpleFunction;
  *
  * @package tourze\Twig
  */
-class Twig
+class Twig extends Base
 {
 
     /**
@@ -68,13 +69,13 @@ class Twig
     }
 
     /**
-     * 输出指定内容
+     * 获取TWIG组件
      *
-     * @param string $fileName
-     * @param array  $context
+     * @return \tourze\Twig\Component\TwigArrayLoader
+     * @throws \tourze\Base\Exception\ComponentNotFoundException
      */
-    public static function render($fileName, array $context)
+    public static function getTwig()
     {
+        return self::get('twig');
     }
-
 }
