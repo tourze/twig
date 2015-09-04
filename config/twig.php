@@ -2,12 +2,6 @@
 
 return [
 
-    // Loader选型
-    'loader'      => [
-        'extension' => 'html',
-        'path'      => 'views',
-    ],
-
     // 自定义函数
     'function'    => [
         'array_get' => ['\tourze\Base\Helper\Arr', 'get'],
