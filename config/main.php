@@ -8,8 +8,10 @@ return [
         'twig' => [
             'class'  => 'tourze\Twig\Component\Twig',
             'params' => [
-                'type' => Twig::FILE_LOADER,
-                'args' => [],
+                'loaderOptions' => [
+                    'type' => Twig::FILE_LOADER,
+                    'args' => [],
+                ],
             ],
             'call'   => [
             ],
