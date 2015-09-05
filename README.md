@@ -17,12 +17,12 @@
 在你的`composer.json`中增加：
 
     "require": {
-        "tourze/twig-html-helpers": "^1.0"
+        "tourze/twig": "^1.0"
     },
 
 或直接执行
 
-    composer require tourze/twig-html-helpers:"^1.0"
+    composer require tourze/twig:"^1.0"
 
 ## 新特性
 
