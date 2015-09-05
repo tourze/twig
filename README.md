@@ -87,7 +87,7 @@ Markdown让人能更专注于内容和排版，而暂时忽略样式，从而提
 
 ### HTML助手方法
 
-本组件封装了(Nicholas Humfrey)[http://www.aelius.com/njh/]提供的[njh/twig-html-helpers](https://github.com/njh/twig-html-helpers)，为使用者提供了以下函数，用于方便地生成HTML标签：
+本组件封装了[Nicholas Humfrey](http://www.aelius.com/njh/)提供的[njh/twig-html-helpers](https://github.com/njh/twig-html-helpers)，为使用者提供了以下函数，用于方便地生成HTML标签：
 
 * check_box_tag($name, $value = '1', $default = false, $options = array())
 * content_tag($name, $content='', $options=array())
