@@ -1,7 +1,5 @@
 # TWIG组件
 
-途者框架的Twig组件，在Twig原生语法的基础上，增加一些扩展语法。
-
 关于[Twig](http://twig.sensiolabs.org)，如果读者还不太熟悉，可以参考下面链接
 
 1. [Twig的在线文档（英文）](http://twig.sensiolabs.org/documentation)
@@ -10,7 +8,7 @@
 
 如果你有发现更好的其他关于Twig的入门教程，欢迎你帮忙补充上去~
 
-关于Twig的基础语法，这里就不赘述了，在这里只讲述本组件中新增的特性。
+关于Twig的基础语法，这里就不赘述了。
 
 ## 安装
 
@@ -27,6 +25,8 @@
     composer require tourze/twig-html-helpers:"^1.0"
 
 ## 新特性
+
+途者框架的Twig组件，在Twig原生语法的基础上，增加一些扩展语法。下面详细说下这些新特性。
 
 ### 缓存
 
