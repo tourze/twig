@@ -2,7 +2,7 @@
   "name": "tourze/twig",
   "description": "集成Twig的一些助手方法",
   "minimum-stability": "stable",
-  "license": "proprietary",
+  "license": "MIT",
   "authors": [
     {
       "name": "tourze",
